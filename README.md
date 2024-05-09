@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jonatng/genai/artifical_intelligence.jpeg" width="400"/>
+  <img src="https://github.com/jonatng/genai/blob/main/images/artifical_intelligenc.jpeg" width="400"/>
 </p>
 ----
 
