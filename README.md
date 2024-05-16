@@ -4,21 +4,20 @@
 ----
 
 # Genai
-Perform data analysis and visualization with Meta Llama 3 using Pandas AI and Ollama for free in your local environment
-
+Perform data analysis and visualization with LLM
+```
+Pandas AI 
+GROQ
+Mixtral 8x7b
+```
+### Create GROQ(Graph-Relational Object Queries) API Key
+```
+https://console.groq.com/playground 
+Then add the GROQ API Key to .env
+```
 ### Install dependencies via terminal
 ```
-pip install -r requirements.txt 
-```
-
-### Download and install Ollama per OS
-```
-https://ollama.com/ 
-```
-
-### Load up Llama 3 via terminal
-```
-ollama pull llama3
+pip3 install -r requirements.txt 
 ```
 
 ### Initialize the model via terminal

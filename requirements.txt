@@ -1,3 +1,4 @@
 pandas
 pandasai
-streamlit
+langchain_groq
+python-dotenv
