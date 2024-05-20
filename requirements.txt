@@ -2,3 +2,4 @@ pandas
 pandasai
 langchain_groq
 python-dotenv
+pandasai[connectors]
