@@ -3,3 +3,7 @@ pandasai
 langchain_groq
 python-dotenv
 pandasai[connectors]
+streamlit
+scikit-learn
+numpy
+langchain-groq

@@ -30,7 +30,7 @@ st.title("Data Analysis with MySQL")
 
 prompt = st.text_input("Enter your prompt:")
 
-if st.button("Generate"):
+if st.button("Generate MySQL Response"):
     if prompt:
         with st.spinner("Generating response..."):
             st.write(df_connector.chat(prompt))
@@ -46,7 +46,7 @@ if uploaded_file is not None:
     df = SmartDataframe(data, config={"llm": model})
     prompt = st.text_area("Enter your prompt:")
 
-    if st.button("Generate"):
+    if st.button("Generate CSV Response"):
         if prompt:
             with st.spinner("Generating response..."):
                 st.write(df.chat(prompt))
