@@ -1,20 +1,22 @@
 import streamlit as st 
 from dotenv import load_dotenv
+from groq import Groq
 from langchain_groq.chat_models import ChatGroq
-import pandas as pd 
 from pandasai import SmartDataframe
 from pandasai.connectors import MySQLConnector
+import mysql.connector
 import os
+import pandas as pd 
 
-my_connector = MySQLConnector(
+conn = mysql.connector.connect(
     config={
-        'host': 'localhost',
-        'port': 3306,
-        'database': 'genai',
-        'username': 'root',
-        'password': 'abcd1234',
-        'table': 'genai.heart_disease',
-        'table': 'genai.thyroid_disease'
+        "host":"localhost",
+        "port":3306,
+        "database":"genai",
+        "username":"root",
+        "password":"abcd1234",
+        "table":"heart_disease",
+        "table":"thyroid_disease"
     }
 )
 
@@ -24,7 +26,7 @@ model = ChatGroq(
     model ="mixtral-8x7b-32768", 
     api_key = os.environ["GROQ_API_KEY"])
 
-df_connector = SmartDataframe(my_connector, config={"llm": model})
+df_connector = SmartDataframe(conn, config={"llm": model})
 
 st.title("Data Analysis with MySQL")
 
