@@ -4,11 +4,10 @@ from groq import Groq
 from langchain_groq.chat_models import ChatGroq
 from pandasai import SmartDataframe
 from pandasai.connectors import MySQLConnector
-import mysql.connector
 import os
 import pandas as pd 
 
-conn = mysql.connector.connect(
+conn = MySQLConnector(
     config={
         "host":"localhost",
         "port":3306,
