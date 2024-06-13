@@ -1,6 +1,5 @@
 import streamlit as st 
 from dotenv import load_dotenv
-from groq import Groq
 from langchain_groq.chat_models import ChatGroq
 from pandasai import SmartDataframe
 from pandasai.connectors import MySQLConnector
