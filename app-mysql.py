@@ -1,10 +1,10 @@
 import streamlit as st 
 from dotenv import load_dotenv
-from langchain_groq.chat_models import ChatGroq
+import pandas as pd 
+import os
+from langchain_groq import ChatGroq
 from pandasai import SmartDataframe
 from pandasai.connectors import MySQLConnector
-import os
-import pandas as pd 
 
 conn = MySQLConnector(
     config={
@@ -21,7 +21,8 @@ conn = MySQLConnector(
 load_dotenv(override=True)
 
 model = ChatGroq(
-    model ="mixtral-8x7b-32768", 
+    temperature=0,
+    model_name ="mixtral-8x7b-32768", 
     api_key = os.environ["GROQ_API_KEY"])
 
 df_connector = SmartDataframe(conn, config={"llm": model})
