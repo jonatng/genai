@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Cache folders
+cache
+
 # Distribution / packaging
 .Python
 build/
@@ -127,6 +130,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+secrets.toml
 
 # Spyder project settings
 .spyderproject
