@@ -3,3 +3,4 @@ pandas
 pandasai
 langchain_groq
 streamlit
+groq
