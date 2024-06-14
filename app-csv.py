@@ -1,4 +1,5 @@
 import streamlit as st
+from groq import Groq
 import pandas as pd
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
@@ -6,6 +7,10 @@ import os
 from pandasai import SmartDataframe
 
 load_dotenv(override=True)
+
+client = Groq(
+     api_key=st.secrets["GROQ_API_KEY"],
+)
 
 # Groq LLM Configuration
 def load_groq_llm():
