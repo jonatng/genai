@@ -1,53 +1,48 @@
 import streamlit as st
 from groq import Groq
-import pandas as pd
-from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-import os
+import pandas as pd
 from pandasai import SmartDataframe
+from dotenv import load_dotenv
+import os
 
 load_dotenv(override=True)
 
 # Groq LLM Configuration
-load_groq_llm = ChatGroq(
+model = ChatGroq(
     model_name="llama3-8b-8192", 
-    api_key=st.secrets['GROQ_API_KEY'])
+    api_key=st.secrets['GROQ_API_KEY']
+)
 
-# Main App Logic
-def main():
-    st.title("Data Analysis with CSV")
+st.set_page_config(page_icon="💬", layout="wide",
+                   page_title="Data Analysis")
 
-    # File Upload
-    uploaded_file = st.file_uploader("Upload a CSV file", type="csv")
+def icon(emoji: str):
+    """Shows an emoji as a Notion-style page icon."""
+    st.write(
+        f'<span style="font-size: 78px; line-height: 1">{emoji}</span>',
+        unsafe_allow_html=True,
+    )
 
-    if uploaded_file is not None:
-        data = pd.read_csv(uploaded_file)
-        llm = load_groq_llm()
-        df = SmartDataframe(data, config={'llm': llm})
+icon("🤖")
 
-        # Chat Interactions
-        query = st.text_input("Enter your query about the data:")
-        if query:
-            response = df.chat(query)
-            st.write(response)
+st.subheader("Data Analysis with LLM", divider="blue", anchor=False)
 
-if __name__ == "__main__":
-    main()
+uploaded_file = st.file_uploader("Upload a CSV file", type=['csv'])
+
+if uploaded_file is not None:
+    data = pd.read_csv(uploaded_file)
+    st.write(data.head(3))
+
+    df = SmartDataframe(data, config={"llm": model})
+    prompt = st.text_area("Enter your prompt:")
+
+    if st.button("Generate"):
+        if prompt:
+            with st.spinner("Generating response..."):
+                st.write(df.chat(prompt))
     
 # Phase 2 to include multiple LLMs, temperature, UI enhancements
-# st.set_page_config(page_icon="💬", layout="wide",
-#                    page_title="Data Analysis")
-
-# def icon(emoji: str):
-#     """Shows an emoji as a Notion-style page icon."""
-#     st.write(
-#         f'<span style="font-size: 78px; line-height: 1">{emoji}</span>',
-#         unsafe_allow_html=True,
-#     )
-
-# icon("🔎")
-
-# st.subheader("Data Analysis", divider="rainbow", anchor=False)
 
 # client = Groq(
 #     api_key=st.secrets["GROQ_API_KEY"],
