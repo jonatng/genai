@@ -9,6 +9,9 @@ __pycache__/
 # Cache folders
 cache
 
+#streamlit
+.streamlit/secrets.toml
+
 # Distribution / packaging
 .Python
 build/

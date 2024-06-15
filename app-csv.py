@@ -8,13 +8,10 @@ from pandasai import SmartDataframe
 
 load_dotenv(override=True)
 
-client = Groq(
-     api_key=st.secrets["GROQ_API_KEY"],
-)
-
 # Groq LLM Configuration
-def load_groq_llm():
-    return ChatGroq(model_name='llama3-8b-8192', api_key=st.secrets['GROQ_API_KEY'])
+load_groq_llm = ChatGroq(
+    model_name="llama3-8b-8192", 
+    api_key=st.secrets['GROQ_API_KEY'])
 
 # Main App Logic
 def main():
